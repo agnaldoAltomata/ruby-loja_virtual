@@ -29,7 +29,10 @@ class Revista
 	#end
 	def self.find(id)
 		path = "db/revistas/#{id}.yml"
-		return nil unless File.exist?(path)
+
+		unless File.exist?(path)
+			raise DocumentNotFound,"Arquivo db/revistas/#{id} não encontrado.",caller
+		end
 		obj = File.read(path)
 		YAML.safe_load(obj,permitted_classes:[Revista,Symbol])
 	end
