@@ -1,26 +1,35 @@
 require 'yaml'
+require 'FileUtils'
 
 class Revista
-	attr_reader :titulo, :id
+	attr_reader :titulo, :id , :destroyed,:new_record
 	attr_accessor :valor
 	
 	def initialize(titulo,valor)
 		@titulo = titulo
 		@valor = valor
 		@id = self.class.next_id
+		@destroyed = false
+		@new_record = true
 	end
 	def save
-		
 		## não trata erros
 		#def save
 		#	File.open("db/revistas/#{@id}.yml", "w") do |file|
 		#	file.puts serialize
 		#	end
 		#end
+		@new_record = false
 		Dir.mkdir("db") unless Dir.exist?("db")
 		Dir.mkdir("db/revistas") unless Dir.exist?("db/revistas")
 			File.open("db/revistas/#{@id}.yml","w") do |file|
 				file.puts serialize
+		end
+	end
+	def destroy
+		unless @destroyed or @new_record
+			@destroyed = true
+			FileUtils.rm "db/revistas/#{@id}.yml"
 		end
 	end
 	# forma não segura, gera erro na verção 4

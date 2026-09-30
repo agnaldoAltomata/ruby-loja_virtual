@@ -2,8 +2,5 @@
 require File.expand_path('lib/loja_virtual.rb')
 
 
-begin
-	Revista.find 42
-rescue DocumentNotFound => e 
-	p e.mensagem_formatada
-end
+mundo_j = Revista.find 1
+p mundo_j.new_record
