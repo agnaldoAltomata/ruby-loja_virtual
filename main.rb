@@ -1,8 +1,6 @@
 
 require File.expand_path('lib/loja_virtual.rb')
 
-class Revista
-	include ActiveFile
-	field :titulo
-	field :valor
-end
+
+revista = Revista.new titulo:"python3.14", valor:40.89
+p revista

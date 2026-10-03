@@ -1,15 +1,18 @@
 
 class Revista
-	attr_reader :titulo, :id , :destroyed,:new_record
-	attr_accessor :valor
+	#com o uso do ActiveFile não necessita das partes comentadas  
+	#	attr_reader :titulo, :id , :destroyed,:new_record
+	#	attr_accessor :valor
 
-	include ActiveFile
+		include ActiveFile
+		
+	#	def initialize(parametrs={})
+	#		@id = self.class.next_id
+	#		@destroyed = false
+	#		@new_record = true
+	#		parametrs.each do |key,valor|
+	#			instance_variable_set "@#{key}",valor
+	#		end 
+	#	end
 	
-	def initialize(titulo,valor)
-		@titulo = titulo
-		@valor = valor
-		@id = self.class.next_id
-		@destroyed = false
-		@new_record = true
-	end
 end
