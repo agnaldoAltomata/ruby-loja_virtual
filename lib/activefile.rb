@@ -78,13 +78,15 @@ module ActiveFile
 				end
 				def method_missing(name, *args, &block)
 					method_name = name.to_s
+					argument = args.first
 
 					if method_name.start_with?("find_by_")
 					
 						field = method_name.sub("find_by_","")
 					
 						load_all.select do |object|
-							object.send(field) == args.first
+							#object.send(field) == args.first
+							should_select? object,field,argument 
 						end
 					
 					else
@@ -92,10 +94,16 @@ module ActiveFile
 					end
 
 				end
+				private
+				def should_select?(object,field,argument)
+					if argument.kind_of? Regexp
+						object.send(field) =~ argument
+					end
+				end
 				def respond_to_missing?(name, include_private = false)
 				  name.to_s.start_with?("find_by_") || super
 				end
-				private
+				
 				def load_all
 					Dir.glob("db/revistas/*.yml").map do |file|
 						deserialize file
