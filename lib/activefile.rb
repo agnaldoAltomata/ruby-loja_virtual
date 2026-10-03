@@ -69,11 +69,41 @@ module ActiveFile
 		    #   self.class_eval = get
 		    #   self.class_eval = set 
 		    #end
+		
 		    #mais simples
 				def field(name)
 					@fields ||= []
 					@fields << name
 					attr_accessor name
+				end
+				def method_missing(name, *args, &block)
+					method_name = name.to_s
+
+					if method_name.start_with?("find_by_")
+					
+						field = method_name.sub("find_by_","")
+					
+						load_all.select do |object|
+							object.send(field) == args.first
+						end
+					
+					else
+						super
+					end
+
+				end
+				def respond_to_missing?(name, include_private = false)
+				  name.to_s.start_with?("find_by_") || super
+				end
+				private
+				def load_all
+					Dir.glob("db/revistas/*.yml").map do |file|
+						deserialize file
+					end
+				end
+				def deserialize(file)
+					obj = File.open(file,"r")
+					YAML.safe_load(obj,permitted_classes:[Revista,Symbol])
 				end
 	end
 	private

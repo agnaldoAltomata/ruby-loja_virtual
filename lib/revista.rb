@@ -1,7 +1,8 @@
 
 class Revista
 	#com o uso do ActiveFile não necessita das partes comentadas  
-	#	attr_reader :titulo, :id , :destroyed,:new_record
+	#mas com method missing precisa
+		attr_reader :titulo, :id , :destroyed,:new_record
 	#	attr_accessor :valor
 
 		include ActiveFile
