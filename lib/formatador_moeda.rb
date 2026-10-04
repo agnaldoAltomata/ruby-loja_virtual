@@ -1,13 +1,17 @@
+require "bundler/setup"
+require "brnumeros"
+
 module FormatadorMoeda
-	def metodo_de_instancia
-		"um mentodo de instancia"
-	end
 	module ClassMethods
 		def formata_moeda(*variaveis_e_metodos)
 			variaveis_e_metodos.each do |name|
 				define_method("#{name}_formatado") do 
 					valor= respond_to?(name)? send(name): instance_variable_get("@#{name}")
 					"R$ #{valor}"
+				end
+				define_method("#{name}_por_extenso") do 
+					valor = respond_to?(name)? send(name): instance_variable_get("@#{name}")
+					valor.por_extenso_em_reais
 				end
 			end
 		end

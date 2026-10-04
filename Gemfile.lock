@@ -1,0 +1,17 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    brnumeros (3.3.0)
+
+PLATFORMS
+  x64-mingw-ucrt
+
+DEPENDENCIES
+  brnumeros (= 3.3.0)
+
+CHECKSUMS
+  brnumeros (3.3.0)
+  bundler (4.0.22) sha256=d8d5ec84c8555e0af71db63ed7aee4d1a8fb839ec46d84212d61979242a5d75a
+
+BUNDLED WITH
+  4.0.22
