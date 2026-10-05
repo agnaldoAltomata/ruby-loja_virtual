@@ -1,6 +1,8 @@
 require 'yaml'
 require 'fileutils'
 require "active_file/version"
+require "rake"
+import File.expand_path("../tasks/db.rake",__FILE__)
 
 module ActiveFile
   #Asim não funciona na versão 4 
