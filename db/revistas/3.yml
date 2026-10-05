@@ -1,6 +1,0 @@
---- !ruby/object:Revista
-id: 3
-destroyed: false
-new_record: false
-titulo: c++
-valor: 20.9

@@ -1,3 +1,5 @@
+require "bundler/setup"
+require "active_file"
 
 class Revista
 	#com o uso do ActiveFile não necessita das partes comentadas  

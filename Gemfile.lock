@@ -1,17 +1,23 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    active_file (1.0.0)
     brnumeros (3.3.0)
+    rake (13.4.2)
 
 PLATFORMS
   x64-mingw-ucrt
 
 DEPENDENCIES
+  active_file (= 1.0.0)
   brnumeros (= 3.3.0)
+  rake
 
 CHECKSUMS
-  brnumeros (3.3.0)
+  active_file (1.0.0)
+  brnumeros (3.3.0) sha256=16906250ab4dfc41baf83ee6ba5be5f6a168bdc48e66cc92ed83395f9ecee8d7
   bundler (4.0.22) sha256=d8d5ec84c8555e0af71db63ed7aee4d1a8fb839ec46d84212d61979242a5d75a
+  rake (13.4.2) sha256=cb825b2bd5f1f8e91ca37bddb4b9aaf345551b4731da62949be002fa89283701
 
 BUNDLED WITH
   4.0.22

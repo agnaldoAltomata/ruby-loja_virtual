@@ -1,6 +1,0 @@
---- !ruby/object:Revista
-titulo: Mundo Java
-valor: 10.9
-id: 1
-destroyed: false
-new_record: false
